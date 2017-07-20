@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{produtoBean.page}'/>
+		<f:event type="preRenderView" listener='#{produtoBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Produto entities"/>
+
+	<ui:define name="header">
+		Produto
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Produto entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3"/>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{produtoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{produtoBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="produtoBeanPageItems" styleClass="data-table" value="#{produtoBean.pageItems}" var="_item"/>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{produtoBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>
