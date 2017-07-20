@@ -8,14 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
-import java.math.BigDecimal;
-import org.com.base.jee.model.Categoria;
-import javax.persistence.OneToOne;
-import javax.persistence.CascadeType;
 
 @Entity
-@Table(name = "TB_PRODUTO")
-public class Produto implements Serializable {
+@Table(name = "TB_CATEGORIA")
+public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -28,12 +24,6 @@ public class Produto implements Serializable {
 
 	@Column(name = "DS_NOME", nullable = false)
 	private String nome;
-
-	@Column(name = "NU_PRECO", nullable = false)
-	private BigDecimal preco;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	private Categoria categoria;
 
 	public Long getId() {
 		return this.id;
@@ -57,14 +47,6 @@ public class Produto implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public BigDecimal getPreco() {
-		return preco;
-	}
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
 	}
 
 	/*
@@ -96,7 +78,7 @@ public class Produto implements Serializable {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		Produto other = (Produto) obj;
+		Categoria other = (Categoria) obj;
 		if (id == null) {
 			if (other.id != null) {
 				return false;
@@ -107,24 +89,14 @@ public class Produto implements Serializable {
 		return true;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		String result = getClass().getSimpleName() + " ";
-		if (nome != null && !nome.trim().isEmpty())
-			result += "nome: " + nome;
-		return result;
-	}
-
-	public void newCategoria() {
-		this.categoria = new Categoria();
+		return "Categoria [id=" + id + ", version=" + version + ", nome=" + nome + "]";
 	}
 
 }

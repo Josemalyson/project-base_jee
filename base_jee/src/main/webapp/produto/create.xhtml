@@ -48,6 +48,19 @@
 					<h:message for="produtoBeanProdutoPreco" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
+				<h:outputLabel value="Categoria:"/>
+				<h:panelGroup>
+					<h:commandLink action="#{produtoBean.produto.newCategoria}" rendered="#{empty produtoBean.produto.categoria}" value="Create New Categoria"/>
+					<h:panelGrid columnClasses="label,component,required" columns="3" rendered="#{!empty produtoBean.produto.categoria}">
+						<h:outputLabel for="produtoBeanProdutoCategoriaNome" value="Nome:"/>
+						<h:panelGroup>
+							<h:inputText id="produtoBeanProdutoCategoriaNome" required="true" value="#{produtoBean.produto.categoria.nome}"/>
+							<h:message for="produtoBeanProdutoCategoriaNome" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText value="*"/>
+					</h:panelGrid>
+				</h:panelGroup>
+				<h:outputText/>
 			</h:panelGrid>
 
 			<div class="buttons">

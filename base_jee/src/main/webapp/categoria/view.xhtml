@@ -7,36 +7,26 @@
 	template="/resources/scaffold/pageTemplate.xhtml">
 
 	<f:metadata>
-		<f:viewParam name="id" value='#{produtoBean.id}'/>
-		<f:event type="preRenderView" listener='#{produtoBean.retrieve}'/>
+		<f:viewParam name="id" value='#{categoriaBean.id}'/>
+		<f:event type="preRenderView" listener='#{categoriaBean.retrieve}'/>
 	</f:metadata>
 
-	<ui:param name="pageTitle" value="View Produto"/>
+	<ui:param name="pageTitle" value="View Categoria"/>
 
 	<ui:define name="header">
-		Produto
+		Categoria
 	</ui:define>
 
 	<ui:define name="subheader">
-		View existing Produto
+		View existing Categoria
 	</ui:define>
 
 	<ui:define name="footer"/>
 
 	<ui:define name="main">
 		<h:panelGrid columnClasses="label,component,required" columns="3">
-			<h:outputLabel for="produtoBeanProdutoNome" value="Nome:"/>
-			<h:outputText id="produtoBeanProdutoNome" value="#{produtoBean.produto.nome}"/>
-			<h:outputText/>
-			<h:outputLabel for="produtoBeanProdutoPreco" value="Preco:"/>
-			<h:outputText id="produtoBeanProdutoPreco" value="#{produtoBean.produto.preco}"/>
-			<h:outputText/>
-			<h:outputLabel for="produtoBeanProdutoCategoria" value="Categoria:"/>
-			<h:panelGrid columnClasses="label,component,required" columns="3" id="produtoBeanProdutoCategoria" rendered="#{!empty produtoBean.produto.categoria}">
-				<h:outputLabel for="produtoBeanProdutoCategoriaNome" value="Nome:"/>
-				<h:outputText id="produtoBeanProdutoCategoriaNome" value="#{produtoBean.produto.categoria.nome}"/>
-				<h:outputText/>
-			</h:panelGrid>
+			<h:outputLabel for="categoriaBeanCategoriaNome" value="Nome:"/>
+			<h:outputText id="categoriaBeanCategoriaNome" value="#{categoriaBean.categoria.nome}"/>
 			<h:outputText/>
 		</h:panelGrid>
 
