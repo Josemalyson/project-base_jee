@@ -24,7 +24,14 @@
 	<ui:define name="footer"/>
 
 	<ui:define name="main">
-		<h:panelGrid columnClasses="label,component,required" columns="3"/>
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="produtoBeanProdutoNome" value="Nome:"/>
+			<h:outputText id="produtoBeanProdutoNome" value="#{produtoBean.produto.nome}"/>
+			<h:outputText/>
+			<h:outputLabel for="produtoBeanProdutoPreco" value="Preco:"/>
+			<h:outputText id="produtoBeanProdutoPreco" value="#{produtoBean.produto.preco}"/>
+			<h:outputText/>
+		</h:panelGrid>
 
 		<div class="buttons">
 			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 

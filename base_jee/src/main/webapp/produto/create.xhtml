@@ -35,7 +35,20 @@
 		<h:form id="create">
 			<h:messages globalOnly="true" styleClass="error"/>
 
-			<h:panelGrid columnClasses="label,component,required" columns="3"/>
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="produtoBeanProdutoNome" value="Nome:"/>
+				<h:panelGroup>
+					<h:inputText id="produtoBeanProdutoNome" required="true" value="#{produtoBean.produto.nome}"/>
+					<h:message for="produtoBeanProdutoNome" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="produtoBeanProdutoPreco" value="Preco:"/>
+				<h:panelGroup>
+					<h:inputText id="produtoBeanProdutoPreco" required="true" value="#{produtoBean.produto.preco}"/>
+					<h:message for="produtoBeanProdutoPreco" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+			</h:panelGrid>
 
 			<div class="buttons">
 				<h:commandLink value="Save" action='#{produtoBean.update}' styleClass="btn btn-primary"/>

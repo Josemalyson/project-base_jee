@@ -28,7 +28,14 @@
 			<f:validateBean disabled="true">
 				<h:panelGroup styleClass="search">
 
-					<h:panelGrid columnClasses="label,component,required" columns="3"/>
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="produtoBeanExampleNome" value="Nome:"/>
+						<h:panelGroup>
+							<h:inputText id="produtoBeanExampleNome" value="#{produtoBean.example.nome}"/>
+							<h:message for="produtoBeanExampleNome" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
 					<h:panelGroup styleClass="buttons">
 						<h:commandLink value="Search" action='#{produtoBean.search}' styleClass="btn btn-primary"/>
 						<h:commandLink value="Create New" action='#{produtoBean.create}' styleClass="btn btn-primary"/>
@@ -36,7 +43,26 @@
 				</h:panelGroup>
 			</f:validateBean>
 			
-			<h:dataTable id="produtoBeanPageItems" styleClass="data-table" value="#{produtoBean.pageItems}" var="_item"/>
+			<h:dataTable id="produtoBeanPageItems" styleClass="data-table" value="#{produtoBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nome"/>
+					</f:facet>
+					<h:link outcome="/produto/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemNome" value="#{_item.nome}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Preco"/>
+					</f:facet>
+					<h:link outcome="/produto/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemPreco" value="#{_item.preco}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
 			<ui:include src="/resources/scaffold/paginator.xhtml">
 				<ui:param name="paginatorBean" value='#{produtoBean}'/>
 			</ui:include>

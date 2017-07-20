@@ -205,6 +205,13 @@ public class ProdutoBean implements Serializable {
 		CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
 		List<Predicate> predicatesList = new ArrayList<Predicate>();
 
+		String nome = this.example.getNome();
+		if (nome != null && !"".equals(nome)) {
+			predicatesList.add(builder.like(
+					builder.lower(root.<String> get("nome")),
+					'%' + nome.toLowerCase() + '%'));
+		}
+
 		return predicatesList.toArray(new Predicate[predicatesList.size()]);
 	}
 
