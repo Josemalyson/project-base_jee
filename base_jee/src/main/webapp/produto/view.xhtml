@@ -32,11 +32,9 @@
 			<h:outputText id="produtoBeanProdutoPreco" value="#{produtoBean.produto.preco}"/>
 			<h:outputText/>
 			<h:outputLabel for="produtoBeanProdutoCategoria" value="Categoria:"/>
-			<h:panelGrid columnClasses="label,component,required" columns="3" id="produtoBeanProdutoCategoria" rendered="#{!empty produtoBean.produto.categoria}">
-				<h:outputLabel for="produtoBeanProdutoCategoriaNome" value="Nome:"/>
-				<h:outputText id="produtoBeanProdutoCategoriaNome" value="#{produtoBean.produto.categoria.nome}"/>
-				<h:outputText/>
-			</h:panelGrid>
+			<h:link id="produtoBeanProdutoCategoria" outcome="/categoria/view" rendered="#{!empty produtoBean.produto.categoria}" value="#{produtoBean.produto.categoria}">
+				<f:param name="id" value="#{produtoBean.produto.categoria.id}"/>
+			</h:link>
 			<h:outputText/>
 		</h:panelGrid>
 

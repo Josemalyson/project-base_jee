@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
 	template="/resources/scaffold/pageTemplate.xhtml">
 
 	<f:metadata>
@@ -33,6 +34,15 @@
 						<h:panelGroup>
 							<h:inputText id="produtoBeanExampleNome" value="#{produtoBean.example.nome}"/>
 							<h:message for="produtoBeanExampleNome" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="produtoBeanExampleCategoria" value="Categoria:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{categoriaBean.converter}" id="produtoBeanExampleCategoria" value="#{produtoBean.example.categoria}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{categoriaBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="produtoBeanExampleCategoria" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
 					</h:panelGrid>

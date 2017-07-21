@@ -1,17 +1,16 @@
 package org.com.base.jee.model;
 
-import javax.persistence.Entity;
 import java.io.Serializable;
-import javax.persistence.Table;
-import javax.persistence.Id;
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Version;
-import java.math.BigDecimal;
-import org.com.base.jee.model.Categoria;
-import javax.persistence.OneToOne;
-import javax.persistence.CascadeType;
 
 @Entity
 @Table(name = "TB_PRODUTO")
@@ -32,7 +31,7 @@ public class Produto implements Serializable {
 	@Column(name = "NU_PRECO", nullable = false)
 	private BigDecimal preco;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Categoria categoria;
 
 	public Long getId() {
@@ -107,12 +106,8 @@ public class Produto implements Serializable {
 		return true;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void newCategoria() {
+		this.categoria = new Categoria();
 	}
 
 	@Override
@@ -123,8 +118,12 @@ public class Produto implements Serializable {
 		return result;
 	}
 
-	public void newCategoria() {
-		this.categoria = new Categoria();
+	public Categoria getCategoria() {
+		return this.categoria;
+	}
+
+	public void setCategoria(final Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 }

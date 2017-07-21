@@ -25,6 +25,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.com.base.jee.model.Produto;
+import org.com.base.jee.model.Categoria;
 
 /**
  * Backing bean for Produto entities.
@@ -210,6 +211,10 @@ public class ProdutoBean implements Serializable {
 			predicatesList.add(builder.like(
 					builder.lower(root.<String> get("nome")),
 					'%' + nome.toLowerCase() + '%'));
+		}
+		Categoria categoria = this.example.getCategoria();
+		if (categoria != null) {
+			predicatesList.add(builder.equal(root.get("categoria"), categoria));
 		}
 
 		return predicatesList.toArray(new Predicate[predicatesList.size()]);
